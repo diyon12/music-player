@@ -13,6 +13,7 @@ https://youtu.be/9UYaBmYHvxI?si=OHVC5yjGXKOdDuWx
 ## Table of Contents
 
 - [Features](#features)
+- [Demo](#demo)
 
 
 ## Features
@@ -23,3 +24,5 @@ https://youtu.be/9UYaBmYHvxI?si=OHVC5yjGXKOdDuWx
 - Responsive design
 - Hover effects for enhanced user experience
 
+## Demo
+https://diyon12.github.io/music-player/
