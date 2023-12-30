@@ -13,11 +13,7 @@ https://youtu.be/9UYaBmYHvxI?si=OHVC5yjGXKOdDuWx
 ## Table of Contents
 
 - [Features](#features)
-- [Demo](#demo)
-- [Getting Started](#getting-started)
-- [Usage](#usage)
-- [Credits](#credits)
-- [License](#license)
+
 
 ## Features
 
