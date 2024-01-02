@@ -5,35 +5,44 @@ audio.addEventListener('timeupdate', updateProgressBar);
 audio.addEventListener('durationchange', updateDuration);
 audio.addEventListener('ended', resetProgressBar);
 
+// Set an interval to regularly update the progress bar
+setInterval(updateProgressBar, 1000); // Update every second (adjust as needed)
+
 function togglePlayPause() {
     if (isPlaying) {
-    pause();
+        pause();
     } else {
-    play();
+        play();
     }
+    updatePlayButtonIcon();
 }
 
 function play() {
     audio.play();
     isPlaying = true;
-    updatePlayButtonIcon();
 }
 
 function pause() {
     audio.pause();
     isPlaying = false;
-    updatePlayButtonIcon();
 }
 
 function updatePlayButtonIcon() {
-    var playBtn = document.querySelector('.play-btn');
-    playBtn.innerHTML = isPlaying ? '<i class="fas fa-pause"></i>' : '<i class="fas fa-play"></i>';
+    var playBtn = document.getElementById('playPauseBtn');
+    playBtn.innerHTML = isPlaying
+        ? '<svg width="30" height="32" fill="currentColor"><rect x="6" y="4" width="4" height="24" rx="2" /><rect x="20" y="4" width="4" height="24" rx="2" /></svg>'
+        : '<svg width="24" height="24" fill="currentColor"><path d="M6 4l14 8-14 8V4Z" /></svg>';
 }
 
 function updateProgressBar() {
     var progress = (audio.currentTime / audio.duration) * 100;
     document.getElementById('progress').style.width = progress + '%';
-    document.getElementById('currentTime').textContent = formatTime(audio.currentTime);
+    document.querySelector('.current-time').textContent = formatTime(audio.currentTime);
+}
+
+function resetProgressBar() {
+    document.getElementById('progress').style.width = '0%';
+    document.querySelector('.current-time').textContent = '0:00';
 }
 
 function updateDuration() {
@@ -41,21 +50,20 @@ function updateDuration() {
     durationElement.textContent = formatTime(audio.duration);
 }
 
-function resetProgressBar() {
-    document.getElementById('progress').style.width = '0%';
-    document.getElementById('currentTime').textContent = '0:00';
-}
-
-function setVolume(volume) {
-    audio.volume = volume / 100;
-}
-
 function formatTime(seconds) {
     var minutes = Math.floor(seconds / 60);
     var remainingSeconds = Math.floor(seconds % 60);
     return (
-    minutes.toString().padStart(2, '0') +
-    ':' +
-    remainingSeconds.toString().padStart(2, '0')
+        minutes.toString().padStart(2, '0') +
+        ':' +
+        remainingSeconds.toString().padStart(2, '0')
     );
 }
+
+function rewind() {
+    audio.currentTime -= 10;
+}
+
+const skipForward = () => {
+    audio.currentTime += 10;
+};

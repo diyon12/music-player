@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Music Player</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+ <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="player-container" id="music-player">
+    <!-- Ganti bagian src dengan URL gambar Anda -->
+    <img src="image.jpg" alt="Music Cover">
+    <div class="controls">
+      <div class="title">Sweet Melody</div>
+      <div class="artist">Choco Maestro</div>
+      <div class="durasi">
+          <div class="current-time" id="currentTime">0:00</div>
+          <div class="duration" id="duration">0:00</div>
+      </div>
+      <div class="progress-bar">
+        <div class="progress" id="progress"></div>
+      </div>
+      <input type="range" class="volume-control" value="50" onchange="setVolume(this.value)" />
+      <div class="play-btn-container">
+        <button class="play-btn" onclick="togglePlayPause()">
+          <i class="fas fa-play"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
